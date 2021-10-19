@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
+import {red,skyblue} from "../cssModule/variable.module.css";
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
+const count = ref(0);
+// const varClass = ref(red)
+// const clickMe = ()=>{
+//   varClass.value = skyblue
+// }
 </script>
 
 <template>
@@ -31,6 +36,8 @@ const count = ref(0)
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+
+  <div :class="red" >lalala</div>
 </template>
 
 <style scoped>
