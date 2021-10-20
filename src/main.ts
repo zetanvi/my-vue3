@@ -1,4 +1,6 @@
+import 'virtual:windi.css' 
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import {
   // create naive ui
   create,
@@ -12,4 +14,4 @@ const naive = create({
 })
 
 
-createApp(App).use(naive).mount('#app')
+createApp(App).use(naive).use(createPinia()).mount('#app')

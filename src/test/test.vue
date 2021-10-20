@@ -3,11 +3,17 @@
   <n-button :class="modelClass" type="primary" size="medium" @click="changColor"
     >我变色了</n-button
   >
+  <span>{{ testStore.getName }}111</span>
+  <n-button type="primary" size="medium" @click="testStore.changeName"
+    >changeName</n-button
+  >
 </template>
 
 <script lang="ts" setup>
 import { ref } from '@vue/reactivity'
+import { computed } from 'vue'
 import classmodule from './cssmodule.module.css'
+import { useTestStore } from './store'
 
 console.log(import.meta.env, 'import.meta.env.VITE_PORT')
 
@@ -27,6 +33,9 @@ for (const modules in globModules) {
     })
   }
 }
+// pinia的使用
+const testStore = useTestStore()
+console.log(testStore, 'testStore.getName')
 </script>
 
 <style scoped lang="scss"></style>

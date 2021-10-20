@@ -3,3 +3,7 @@
 
 ### ui组件使用native-ui
 
+### 样式使用windicss
+
+### 状态管理使用pinia 
+
