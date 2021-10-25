@@ -3,6 +3,8 @@
 
 ### ui组件使用native-ui
 
+### 图标icon使用xicons中的ionicons5 https://www.xicons.org/#/zh-CN
+
 ### 样式使用windicss
 
 ### 状态管理使用pinia 

@@ -5,12 +5,15 @@ import {
   // create naive ui
   create,
   // component
-  NButton
+  NButton,
+  NConfigProvider,
+  NGlobalStyle,
+  NIcon
 } from 'naive-ui'
 import App from './App.vue'
 
 const naive = create({
-  components: [NButton]
+  components: [NButton,NConfigProvider,NGlobalStyle,NIcon]
 })
 
 
