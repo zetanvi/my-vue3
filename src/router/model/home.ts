@@ -1,13 +1,13 @@
-import { RouteRecord,RouteMeta,RouteRecordRaw } from "vue-router";
-import Home from "@/view/Home.vue";
+import { RouteType } from '../type'
 
-const home:RouteRecordRaw = {
-  path:'/home',
-  redirect:'/',
-  name:'Home',
-  components:()=>import('@/view/Home.vue'),
-  meta:{
-    title:'主页',
-    icon:''
+const home: RouteType = {
+  path: '/home',
+  name: 'Home',
+  components: () => import('@/view/Home.vue'),
+  // components: () => import('../../view/Home.vue'),
+  meta: {
+    title: '主页'
   }
 }
+
+export default home

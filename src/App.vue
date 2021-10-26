@@ -9,8 +9,7 @@
     <n-icon size="40">
       <game-controller-outline />
     </n-icon>
-
-    <Test></Test>
+    <router-view></router-view>
     <!-- n-global-style 给body添加主题样式 -->
     <n-global-style />
   </n-config-provider>
@@ -18,7 +17,6 @@
 <script setup lang="ts">
 import { darkTheme } from 'naive-ui'
 import { ref } from 'vue'
-import Test from './test/test.vue'
 import { GameControllerOutline } from '@vicons/ionicons5'
 const theme = ref<any>(null)
 </script>
