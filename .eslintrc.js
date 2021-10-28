@@ -1,52 +1,35 @@
 module.exports = {
   root: true,
 
+  parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020,
     sourceType: 'module',
+    jsxPragma: 'React',
     ecmaFeatures: {
-      legacyDecorators: true
-    }
+      jsx: true,
+    },
   },
-
   env: {
     browser: true,
     node: true,
     es6: true
   },
 
-  extends: ['plugin:vue/recommended', 'eslint:recommended'],
-
-  // add your custom rules here
-  //it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
-    'vue/max-attributes-per-line': [
-      2,
-      {
-        singleline: 10,
-        multiline: {
-          max: 1,
-          allowFirstLine: false
-        }
+    // eslint-plugin-vue 配置 使用 eslint 检测 template里的代码，这里我配置 2 个空格缩进
+    'vue/html-indent': ['error', 2],
+    // vue文件中template中一个标签一行最多包含5个属性，若多过5个用多行表示，多行只有一个属性
+    'vue/max-attributes-per-line': ['error', {
+      'singleline': {
+        'max': 5
+      },      
+      'multiline': {
+        'max': 1
       }
-    ],
-    'vue/html-self-closing': [
-      'error',
-      {
-        html: {
-          void: 'never',
-          normal: 'any',
-          component: 'any'
-        },
-        svg: 'always',
-        math: 'always'
-      }
-    ],
+    }],
     'prefer-const': 'off',
-    'vue/singleline-html-element-content-newline': 'off',
-    'vue/multiline-html-element-content-newline': 'off',
-    'vue/name-property-casing': ['error', 'PascalCase'],
-    'vue/no-v-html': 'off',
     'accessor-pairs': 2,
     'arrow-spacing': [
       2,
@@ -77,7 +60,6 @@ module.exports = {
         after: true
       }
     ],
-    'padded-blocks': 'off',
     'comma-style': [2, 'last'],
     'constructor-super': 2,
     curly: [2, 'multi-line'],
@@ -269,7 +251,6 @@ module.exports = {
     'wrap-iife': [2, 'any'],
     'yield-star-spacing': [2, 'both'],
     yoda: [2, 'never'],
-    'prefer-const': 0,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'object-curly-spacing': [
       2,
@@ -281,5 +262,9 @@ module.exports = {
     'array-bracket-spacing': [2, 'never']
   },
 
-  extends: ['plugin:vue/recommended', 'eslint:recommended', '@vue/typescript']
+  extends: ['plugin:vue/vue3-recommended', 'plugin:vue/base'],
+  plugins: [
+    // 注意这里不能配置 html 选项，为什么？https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
+    'vue',
+  ],
 }

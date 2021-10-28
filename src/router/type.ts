@@ -6,5 +6,5 @@ type Components<T extends any = any> =
   | (() => Promise<typeof import('*.vue')>)
   | (() => Promise<T>)
 export interface RouteType extends Omit<Partial<RouteRecord>, 'components'> {
-  components: Components
+  components?: Components
 }

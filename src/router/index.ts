@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { RouteType } from './type'
 
-let routes: any[] = []
+const root: RouteType = {
+  path: '/',
+  name: 'Root',
+  redirect: '/home',
+}
+let routes: any[] = [root]
 const globModules = import.meta.globEager('./model/*.ts')
 console.log(globModules, 'globModules')
 for (const module in globModules) {
@@ -11,6 +17,7 @@ for (const module in globModules) {
   }
 }
 console.log(routes, 'routes')
+
 const router = createRouter({
   history: createWebHistory(),
   routes
