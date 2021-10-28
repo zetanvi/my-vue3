@@ -3,7 +3,7 @@ import { RouteType } from '../type'
 const home: RouteType = {
   path: '/home',
   name: 'Home',
-  components: () => import('@/view/Home.vue'),
+  component: () => import('@/view/Home.vue'),
   meta: {
     title: '主页'
   }

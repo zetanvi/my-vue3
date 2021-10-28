@@ -1,7 +1,9 @@
 module.exports = {
+
   root: true,
 
   parser: 'vue-eslint-parser',
+
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -11,6 +13,7 @@ module.exports = {
       jsx: true,
     },
   },
+
   env: {
     browser: true,
     node: true,
@@ -29,6 +32,7 @@ module.exports = {
         'max': 1
       }
     }],
+    'vue/comment-directive': 0,
     'prefer-const': 'off',
     'accessor-pairs': 2,
     'arrow-spacing': [
@@ -263,8 +267,10 @@ module.exports = {
   },
 
   extends: ['plugin:vue/vue3-recommended', 'plugin:vue/base'],
+
   plugins: [
     // 注意这里不能配置 html 选项，为什么？https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     'vue',
-  ],
+  ]
+  
 }
