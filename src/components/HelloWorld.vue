@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import {red,skyblue} from "../cssModule/variable.module.css";
+import { ref } from 'vue'
 
-defineProps<{ msg: string }>();
+const props = defineProps<{
+  msg: string
+}>()
 
-const count = ref(0);
-// const varClass = ref(red)
-// const clickMe = ()=>{
-//   varClass.value = skyblue
-// }
+const count = ref(0)
 </script>
 
 <template>
@@ -31,13 +28,13 @@ const count = ref(0);
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <button type="button" @click="count++">count is: {{ count }}</button>
+  <button type="button" @click="count++">
+    count is: {{ count }}
+  </button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
-
-  <div :class="red" >lalala</div>
 </template>
 
 <style scoped>

@@ -32,6 +32,7 @@ module.exports = {
         'max': 1
       }
     }],
+    '@typescript-eslint/no-explicit-any': 'off',
     'vue/comment-directive': 0,
     'prefer-const': 'off',
     'accessor-pairs': 2,
@@ -271,6 +272,10 @@ module.exports = {
   plugins: [
     // 注意这里不能配置 html 选项，为什么？https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     'vue',
-  ]
+  ],
+
+  globals: {
+    defineProps: 'readonly',
+  }
   
 }
