@@ -1,15 +1,27 @@
-import { defineConfig } from 'vite'
+import type { UserConfig, ConfigEnv } from 'vite'
+import { loadEnv } from 'vite'
+import { wrapperEnv } from './build/uilt'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
-import { createVitePlugins } from './build/vite/plugin/index'
+import { configHtmlPlugin } from './build/vite/plugin/html'
 import { resolve } from 'path'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue(), WindiCSS()],
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src')
+export default ({ command, mode }:ConfigEnv): UserConfig => {
+  const root = process.cwd()
+
+  const env = loadEnv(mode, root)
+
+  const viteEnv = wrapperEnv(env)
+
+  const isBuild = command === 'build'
+  
+  return {
+    plugins: [vue(), WindiCSS(), configHtmlPlugin(viteEnv, isBuild)],
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, 'src')
+      }
     }
   }
-})
+}
+
