@@ -19,7 +19,9 @@ export default ({ command, mode }:ConfigEnv): UserConfig => {
     plugins: [vue(), WindiCSS(), configHtmlPlugin(viteEnv, isBuild)],
     resolve: {
       alias: {
-        '@': resolve(__dirname, 'src')
+        '@': resolve('src'),
+        '@cp': resolve('src/components'),
+        '@view': resolve('src/view'),
       }
     }
   }

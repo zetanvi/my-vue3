@@ -1,12 +1,9 @@
 <template>
-  <div>
-    home
-    <Test />
-  </div>
+  <div class="content" />
 </template>
 
 <script lang="ts" setup>
-import Test from '@/test/test.vue'
+console.log('这个是home组件')
 </script>
 
 <style scoped lang="scss"></style>
