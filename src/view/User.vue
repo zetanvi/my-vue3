@@ -1,8 +1,7 @@
 <template>
-  <div>user</div>
+	<div>user</div>
 </template>
 
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
 <style scoped lang="scss"></style>

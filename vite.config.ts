@@ -20,8 +20,6 @@ export default ({ command, mode }:ConfigEnv): UserConfig => {
     resolve: {
       alias: {
         '@': resolve('src'),
-        '@cp': resolve('src/components'),
-        '@view': resolve('src/view'),
       }
     }
   }
