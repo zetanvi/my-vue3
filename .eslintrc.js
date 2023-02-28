@@ -1,9 +1,10 @@
 module.exports = {
-
   root: true,
 
+  // ↓将vue文件转换成ESTree，交给eslint进行检查，主要是校验<template>中的内容
   parser: 'vue-eslint-parser',
 
+  // ↓typescript转换成ESTree，交给eslint进行检查
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -17,53 +18,49 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
   },
 
+  // 'off'-0 'warn'-1 'error'-2, 具体规则意思查看：https://eslint.bootcss.com/docs/rules/
   rules: {
     // eslint-plugin-vue 配置 使用 eslint 检测 template里的代码，这里我配置 2 个空格缩进
     'vue/html-indent': ['error', 2],
-    // vue文件中template中一个标签一行最多包含5个属性，若多过5个用多行表示，多行只有一个属性
-    'vue/max-attributes-per-line': ['error', {
-      'singleline': {
-        'max': 5
-      },      
-      'multiline': {
-        'max': 1
-      }
-    }],
-    '@typescript-eslint/no-explicit-any': 'off',
-    'vue/comment-directive': 0,
-    'prefer-const': 'off',
-    'accessor-pairs': 2,
+    'vue/comment-directive': 'off',
+    // ↓要求使用 const 声明那些声明后不再被修改的变量
+    'prefer-const': 'error',
+    // ↓强制 getter 和 setter 在对象中成对出现
+    'accessor-pairs': 'error',
+    // ↓强制箭头函数的箭头前后使用一致的空格
     'arrow-spacing': [
-      2,
+      'error',
       {
         before: true,
-        after: true
-      }
+        after: true,
+      },
     ],
-    'block-spacing': [2, 'always'],
+    // ↓强制箭头函数的箭头前后使用一致的空格
+    'block-spacing': ['error', 'always'],
+    // ↓强制在代码块中使用一致的大括号风格
     'brace-style': [
-      2,
+      'error',
       '1tbs',
       {
-        allowSingleLine: true
-      }
+        allowSingleLine: true,
+      },
     ],
     camelcase: [
       0,
       {
-        properties: 'always'
-      }
+        properties: 'always',
+      },
     ],
     'comma-dangle': [0],
     'comma-spacing': [
       2,
       {
         before: false,
-        after: true
-      }
+        after: true,
+      },
     ],
     'comma-style': [2, 'last'],
     'constructor-super': 2,
@@ -75,32 +72,33 @@ module.exports = {
       2,
       {
         before: true,
-        after: true
-      }
+        after: true,
+      },
     ],
     'handle-callback-err': [2, '^(err|error)$'],
-    indent: [2, 2, { SwitchCase: 1 }],
+    // ↓强制使用一致的缩进
+    indent: ['off', 2, { SwitchCase: 1 }],
     'jsx-quotes': [2, 'prefer-single'],
     'key-spacing': [
       2,
       {
         beforeColon: false,
-        afterColon: true
-      }
+        afterColon: true,
+      },
     ],
     'keyword-spacing': [
       2,
       {
         before: true,
-        after: true
-      }
+        after: true,
+      },
     ],
     'new-cap': [
       2,
       {
         newIsCap: true,
-        capIsNew: false
-      }
+        capIsNew: false,
+      },
     ],
     'new-parens': 2,
     'no-array-constructor': 2,
@@ -136,8 +134,8 @@ module.exports = {
       2,
       {
         allowLoop: false,
-        allowSwitch: false
-      }
+        allowSwitch: false,
+      },
     ],
     'no-lone-blocks': 2,
     'no-mixed-spaces-and-tabs': 0,
@@ -146,8 +144,8 @@ module.exports = {
     'no-multiple-empty-lines': [
       2,
       {
-        max: 1
-      }
+        max: 1,
+      },
     ],
     'no-native-reassign': 2,
     'no-negated-in-lhs': 2,
@@ -179,12 +177,11 @@ module.exports = {
     'no-unneeded-ternary': [
       2,
       {
-        defaultAssignment: false
-      }
+        defaultAssignment: false,
+      },
     ],
     'no-unreachable': 2,
     'no-unsafe-finally': 2,
-    'no-unused-vars': 0,
     'no-useless-call': 2,
     'no-useless-computed-key': 2,
     'no-useless-constructor': 2,
@@ -194,8 +191,8 @@ module.exports = {
     'one-var': [
       2,
       {
-        initialized: 'never'
-      }
+        initialized: 'never',
+      },
     ],
     'operator-linebreak': [
       2,
@@ -203,9 +200,9 @@ module.exports = {
       {
         overrides: {
           '?': 'before',
-          ':': 'before'
-        }
-      }
+          ':': 'before',
+        },
+      },
     ],
     'padded-blocks': [2, 'never'],
     quotes: [
@@ -213,42 +210,33 @@ module.exports = {
       'single',
       {
         avoidEscape: true,
-        allowTemplateLiterals: true
-      }
+        allowTemplateLiterals: true,
+      },
     ],
     semi: [2, 'never'],
     'semi-spacing': [
       2,
       {
         before: false,
-        after: true
-      }
+        after: true,
+      },
     ],
     'space-before-blocks': [2, 'always'],
-    'space-before-function-paren': 0,
     'space-in-parens': [2, 'never'],
     'space-infix-ops': 2,
     'space-unary-ops': [
       2,
       {
         words: true,
-        nonwords: false
-      }
+        nonwords: false,
+      },
     ],
     'spaced-comment': [
       2,
       'always',
       {
-        markers: [
-          'global',
-          'globals',
-          'eslint',
-          'eslint-disable',
-          '*package',
-          '!',
-          ','
-        ]
-      }
+        markers: ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ','],
+      },
     ],
     'template-curly-spacing': [2, 'never'],
     'use-isnan': 2,
@@ -261,10 +249,93 @@ module.exports = {
       2,
       'always',
       {
-        objectsInObjects: false
-      }
+        objectsInObjects: false,
+      },
     ],
-    'array-bracket-spacing': [2, 'never']
+    'array-bracket-spacing': [2, 'never'],
+    // ↓<script setup>中变量在<template>是否有使用
+    'vue/script-setup-uses-vars': 'error',
+    // ↓禁止使用@ts-ignore来消除ESLint检查
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    // ↓在函数和类方法上需要显式的返回类型
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    // ↓禁止使用any类型
+    '@typescript-eslint/no-explicit-any': 'off',
+    // ↓除导入语句外，禁止使用require语句
+    '@typescript-eslint/no-var-requires': 'off',
+    // ↓禁止使用空函数
+    '@typescript-eslint/no-empty-function': 'off',
+    // ↓对自定义事件名称强制使用特定的大小写
+    'vue/custom-event-name-casing': 'off',
+    // ↓禁止定义前使用
+    'no-use-before-define': 'off',
+    // ↓在定义变量之前不允许使用变量
+    '@typescript-eslint/no-use-before-define': 'off',
+    // ↓禁止使用@ts-注解
+    '@typescript-eslint/ban-ts-comment': 'off',
+    // ↓禁止使用特定类型
+    '@typescript-eslint/ban-types': 'off',
+    // ↓禁止使用!后缀运算符进行非null断言
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    // ↓在导出的函数和类的公共类方法上需要显式的返回值和参数类型
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    // ↓禁止使用未使用的变量
+    // '@typescript-eslint/no-unused-vars': [
+    //   'error',
+    //   {
+    //     argsIgnorePattern: '^_',
+    //     varsIgnorePattern: '^_',
+    //   },
+    // ],
+    // ↓禁止使用未使用的变量
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
+    // ↓在函数括号前需要或不允许有空格
+    'space-before-function-paren': 'off',
+    // ↓强制属性顺序
+    'vue/attributes-order': 'off',
+    // ↓强制每个组件应位于其自己的文件中
+    'vue/one-component-per-file': 'off',
+    // ↓在标签的右括号之前要求或不允许换行
+    'vue/html-closing-bracket-newline': 'off',
+    // ↓强制每行的最大属性数
+    'vue/max-attributes-per-line': 'off',
+    // ↓在多行元素的内容之前和之后需要换行
+    'vue/multiline-html-element-content-newline': 'off',
+    // ↓在单行元素的内容之前和之后需要换行
+    'vue/singleline-html-element-content-newline': 'off',
+    // ↓在模板中的自定义组件上实施属性命名样式
+    'vue/attribute-hyphenation': 'off',
+    // ↓需要参数的默认值
+    'vue/require-default-prop': 'off',
+    // ↓html的风格
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'never',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
+    // ↓绑定事件名字规范 https://eslint.vuejs.org/rules/v-on-event-hyphenation.html
+    'vue/v-on-event-hyphenation': [
+      'error',
+      'never',
+      {
+        autofix: true,
+        ignore: [],
+      },
+    ],
+    'vue/multi-word-component-names': 'off',
   },
 
   extends: ['plugin:vue/vue3-recommended', 'plugin:vue/base'],
@@ -276,6 +347,5 @@ module.exports = {
 
   globals: {
     defineProps: 'readonly',
-  }
-  
+  },
 }
